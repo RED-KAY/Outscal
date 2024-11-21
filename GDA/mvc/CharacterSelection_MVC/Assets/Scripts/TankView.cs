@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class TankView : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class TankView : MonoBehaviour
     float _MovementSpeed, _RotationSpeed;
 
     Rigidbody _Rigidbody;
+
+    [SerializeField]MeshRenderer[] _Parts;
 
     public void SetTankController(TankController tankController)
     {
@@ -20,6 +23,13 @@ public class TankView : MonoBehaviour
     {
         _Rigidbody = GetComponent<Rigidbody>();
         
+    }
+
+    private void Start()
+    {
+        Camera mc = Camera.main;
+        mc.transform.parent = transform;
+        mc.transform.position = new Vector3(0f, 3f, -4f);
     }
 
     private void Update()
@@ -46,5 +56,11 @@ public class TankView : MonoBehaviour
         return _Rigidbody;
     }
 
-
+    public void ChangeColor(Material material)
+    {
+        for (int i = 0; i < _Parts.Length; i++)
+        {
+            _Parts[i].material = material;
+        }
+    }
 }

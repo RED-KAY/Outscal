@@ -15,6 +15,8 @@ public class TankController
         _TankView.SetTankController(this);
         _TankModel.SetTankController(this);
         _Rigidbody = _TankView.GetRB();
+
+        _TankView.ChangeColor(_TankModel._Material);
     }
 
     public void Move(float m, float speed)
