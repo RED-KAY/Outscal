@@ -28,14 +28,14 @@ public class TankSpawner : MonoBehaviour
 
     TankController _tankController;
 
-    [SerializeField] TankType _TankToSpawn;
+    [HideInInspector] public TankType _TankToSpawn = TankType.GreenTank;
 
     void Start()
     {
-        SpawnTank();
+        //SpawnTank();
     }
 
-    void SpawnTank()
+    public void SpawnTank()
     {
         TankModel tankModel = new TankModel(_TankList[((int)_TankToSpawn)]);
         _tankController = new TankController(_tank, tankModel);
