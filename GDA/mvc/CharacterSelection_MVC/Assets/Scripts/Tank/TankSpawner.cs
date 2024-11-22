@@ -20,24 +20,15 @@ public struct Tank
 
 public class TankSpawner : MonoBehaviour
 {
-
-
     public List<Tank> _TankList;
 
     [SerializeField] TankView _tank;
 
     TankController _tankController;
 
-    [HideInInspector] public TankType _TankToSpawn = TankType.GreenTank;
-
-    void Start()
+    public void SpawnTank(TankType tankToSpawn = TankType.GreenTank)
     {
-        //SpawnTank();
-    }
-
-    public void SpawnTank()
-    {
-        TankModel tankModel = new TankModel(_TankList[((int)_TankToSpawn)]);
+        TankModel tankModel = new TankModel(_TankList[((int)tankToSpawn)]);
         _tankController = new TankController(_tank, tankModel);
 
 

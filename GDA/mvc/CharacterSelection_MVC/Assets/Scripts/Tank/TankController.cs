@@ -19,14 +19,14 @@ public class TankController
         _TankView.ChangeColor(_TankModel._Material);
     }
 
-    public void Move(float m, float speed)
+    public void Move(float m)
     {
-        _Rigidbody.linearVelocity = _TankView.transform.forward * m * speed;
+        _Rigidbody.linearVelocity = _TankView.transform.forward * m * _TankModel._MovementSpeed;
     }
 
-    public void Rotate(float r, float speed)
+    public void Rotate(float r)
     {
-        Vector3 vector = new Vector3(0f, r * speed, 0f);
+        Vector3 vector = new Vector3(0f, r * _TankModel._RotationSpeed, 0f);
         Quaternion deltaRotation = Quaternion.Euler(vector * Time.deltaTime);
         _Rigidbody.MoveRotation(_Rigidbody.rotation * deltaRotation);
     }
